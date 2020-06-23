@@ -1,0 +1,26 @@
+{
+  "name": "utm-link-shortner",
+  "version": "1.0.0",
+  "description": "MERN UTM Campaign Builder &amp; Custom Domain Link Shortner built with MERN Stack",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joanarijo/utm-link-shortner.git"
+  },
+  "author": "Joana Rijo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joanarijo/utm-link-shortner/issues"
+  },
+  "homepage": "https://github.com/joanarijo/utm-link-shortner#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.20",
+    "nodemon": "^2.0.4",
+    "uniqid": "^5.2.0"
+  }
+}
