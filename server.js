@@ -2,32 +2,30 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-
-
-// init
+// Init
 const app = express();
 
-//bodyparser mid
-app.use(bodyParser.urlencoded({ extended: false }));
+// Bodyparser Mid
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-//db key
+// Database Key
 const db = require('./config/keys').mongoURL;
 
-//db connection
-mongoose.connect(db)
-    .then(() => console.log('database connected.'))
+// Database Connection
+mongoose.connect(db, { useUnifiedTopology: true, useNewUrlParser: true })
+    .then(() => console.log('Database connected'))
     .catch((err) => console.log(err));
 
-// routes 
+// Routes 
 const shorten = require('./routes/api/shorten');
 app.use('/api/shorten', shorten);
 
-//path - test
+// Path 
 app.get('/', (req, res) => {
     res.send('hello world');
 });
 
-// port
+// Port
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));

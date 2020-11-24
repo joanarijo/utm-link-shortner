@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-//schema
+// Database - Schema
 const UrlSchema = new Schema({
-    id: {type: String},
+    _id: {type: String},
     url: {
         type: String,
         required: true
