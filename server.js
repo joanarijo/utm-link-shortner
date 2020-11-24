@@ -21,6 +21,23 @@ mongoose.connect(db, { useUnifiedTopology: true, useNewUrlParser: true })
 const shorten = require('./routes/api/shorten');
 app.use('/api/shorten', shorten);
 
+const redirect = require('./routes/api/redirect');
+app.use('/api/redirect', redirect);
+
+// Redirect's based on id + hash
+app.get('/:hash', (req, res) => {
+    const id = req.params.hash;
+    URL.findOne({_id:id}, (err, doc) => {
+        if(doc){
+            console.log(doc.url);
+            res.redirect('http://' + doc.url);
+        } else{
+            console.log('This url is invalid.');
+            res.redirect('/');
+        }
+    })
+})
+
 // Path 
 app.get('/', (req, res) => {
     res.send('hello world');
