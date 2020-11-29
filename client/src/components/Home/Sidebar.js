@@ -6,10 +6,24 @@ const Sidebar = () => {
     
     return (
         
-        <div>
-            <h1>sidebar</h1>
-              <Link to="/archive">Archive</Link>
-        </div>
+        <aside>
+            <h3>Latest Shortlinks</h3>
+            <ul>
+                <li><p>Original: <a href="https://www.example.com">https://www.example.com</a></p></li>
+                <li><p>Shortlink: <a href="https://www.example.com">https://www.example.com</a></p></li>
+            </ul>
+            <ul>
+                <li><p>Original: <a href="https://www.example.com">https://www.example.com</a></p></li>
+                <li><p>Shortlink: <a href="https://www.example.com">https://www.example.com</a></p></li>
+            </ul>
+            <ul>
+                <li><p>Original: <a href="https://www.example.com">https://www.example.com</a></p></li>
+                <li><p>Shortlink: <a href="https://www.example.com">https://www.example.com</a></p></li>
+            </ul>
+            <hr/>
+            <h3>Shortlinks Archive</h3>
+              <p>Check <Link to="/archive">All Shortlinks</Link> created so far.</p>
+        </aside>
         
      );
 }

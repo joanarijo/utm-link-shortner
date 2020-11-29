@@ -1,12 +1,14 @@
+import React from 'react';
+import Main from './Main';
 import Sidebar from './Sidebar';
 
 const Home = () => {
 
     return (
-        <div>
-           <h1>home</h1> 
-           <Sidebar />
-        </div>
+        <React.Fragment>
+            <Main />
+            <Sidebar />
+        </React.Fragment>
      );
 }
  
