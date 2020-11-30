@@ -1,0 +1,21 @@
+@import "./variables";
+@import "./mixins";
+
+header{
+    width: 70%;
+    &:after {
+        @include tinyHr();
+        margin-left: $size-wrap;
+    }
+    h1{
+        margin: 0;
+        padding-left: $size-wrap;
+        &:first-child{
+            padding-top: $size-wrap;
+        }
+        span{
+            color: $color-highlight;
+        }
+    } 
+       
+}

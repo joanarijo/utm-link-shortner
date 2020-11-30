@@ -1,0 +1,90 @@
+main {
+    width: 70%;
+    section {
+        margin: $size-wrap;
+    }
+    h3 {
+        @include text($color-text, 16px, 400);
+        a {
+            @include link($color-text);
+        }
+    }
+    p{
+        @include text($color-text, 12px, 400);
+    }
+    a {
+        @include link($color-text);
+    }
+    h3, p{
+        padding: 0 2rem 0 2rem;
+        margin: 0;
+    }
+    hr{
+        @include fullHr($color-text);
+        margin: 2rem 0 2rem 0;
+    }
+    form{
+        padding-top: $size-wrap;
+    }
+    fieldset {
+        padding: 0;
+        border: 0;
+        padding: 0 2rem 0 2rem;
+        width: 70%;
+        div {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            column-gap: 52px;
+        }
+        span {
+            @include text($color-text, 14px, 400);
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+    }
+    input{
+        display: block;
+        margin: 5px 0px;
+    }
+
+    input[type=text], select{
+        width: 100%;
+        border: 0;
+        background: $color-input-background;
+        border-radius: 5px;
+        padding: 10px 20px;
+
+        &::placeholder {
+            @include text($color-placeholder, 14px, 300);
+          }
+        &:focus{
+            outline-color: $color-input-focus;
+            
+        }  
+    }
+    input[type="submit"]{
+        display: inline;
+        border: 0;
+        background: $color-btn;
+        border-radius: 5px;
+        padding: 10px 20px;
+        @include text($color-text-light, 14px, 300);
+        margin-right: 10px;
+        cursor: pointer;
+        &:hover{
+            background: $color-btn-hover;
+        }
+        &:focus {
+            outline-width: 0;
+        }
+        &:nth-child(3){
+            background: $color-highlight;
+            &:hover {
+                background: $color-btn-highlight-hover;
+            }
+        }
+    }
+
+}

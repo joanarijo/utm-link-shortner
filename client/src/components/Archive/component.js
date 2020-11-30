@@ -4,10 +4,13 @@ import { Link } from "react-router-dom";
 const Archive = () => {
 
     return (
-        <div>
-           <h1>archive</h1> 
-           <Link to="/">Home</Link>
-        </div>
+         <main>
+         <section>
+            <h3>Archive</h3>
+            <p>All urls converted to shortlinks:</p>
+            <p>Return <Link to="/">Home</Link></p>
+         </section>
+         </main>
      );
 }
  

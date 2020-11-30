@@ -1,0 +1,44 @@
+@import "./variables";
+
+
+
+@mixin flex {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+}
+
+@mixin text($color, $size, $weight) {
+    color: $color;
+    font-size: $size;
+    font-weight: $weight;
+}
+
+@mixin link($hover) {
+    color: $color-highlight;
+    &:hover {
+        color: $hover;
+    }
+    &visited{
+        color: $color-highlight;
+    }
+}
+
+@mixin fullHr($color) {
+    width: 100%;
+    border: 1px solid $color;
+    opacity: 0.1;
+    margin: $size-wrap 0 $size-wrap 0;
+}
+
+@mixin tinyHr() {
+    content: " ";
+    border: 1px solid $color-text;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: block;
+    max-width: 40px;
+    opacity: 0.1;
+}
+

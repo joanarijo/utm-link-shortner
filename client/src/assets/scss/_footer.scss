@@ -1,0 +1,20 @@
+@import "./variables";
+@import "./mixins";
+
+footer {
+    /* change to mixin */
+    position: absolute;
+    bottom: 0;
+    margin: $size-wrap;
+    p {
+        @include text($color-text, 11px, 400);
+    }&:before {
+        @include tinyHr();
+    }
+    a {
+        @include link($color-text);
+    }
+    span{
+        color: $color-highlight;
+    }
+}

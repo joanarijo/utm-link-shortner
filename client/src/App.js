@@ -1,13 +1,15 @@
-import React from 'react';
-import './App.css';
-import './assets/scss/main.scss';
+import React from "react";
+import './assets/scss/app.scss';
+
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './components/Header/component';
 import Home from './components/Home/component';
 import Archive from './components/Archive/component';
 import Footer from './components/Footer/component';
 
-const App = () => (
+function App() {
+
+  return (
   <React.Fragment>
     <Header />
     <Router>
@@ -18,6 +20,7 @@ const App = () => (
     </Router>
     <Footer />
   </React.Fragment>
-);
+  );
+}
 
 export default App;

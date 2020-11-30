@@ -1,0 +1,36 @@
+@import "./variables";
+@import "./mixins";
+
+aside {
+    @include flex();
+    background: $color-background;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30%;
+    div {
+        padding: $size-wrap;
+        h3 {
+            @include text($color-text-light, 16px, 400);
+            padding: 0 2rem 0 2rem;
+        }
+        ul, p{
+            @include text($color-text-light, 12px, 400);
+            list-style-type: none;
+            padding: 0;
+
+        }
+        p{
+            padding: 0 2rem 0 2rem;
+        }
+        hr {
+            @include fullHr($color-input-focus);
+        }
+        a {
+            @include link($color-text-light);
+        }
+    }
+
+}
+  
+  

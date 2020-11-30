@@ -2,10 +2,10 @@
 const Header = () => {
 
     return (
-        <div>
-           <h1>UTM Campaign Builder</h1> 
+        <header>
+           <h1><span>MERN</span> UTM Campaign Builder</h1> 
            <h1>& Custom Domain Link Shortner</h1> 
-        </div>
+        </header>
      );
 }
  

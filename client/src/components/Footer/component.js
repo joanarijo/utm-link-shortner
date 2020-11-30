@@ -2,9 +2,9 @@
 const Footer = () => {
 
     return (
-        <div>
-           <p>Made with ❤ by <a href="https://joanarijo.dev/" target="_blank">Joana Rijo</a></p> 
-        </div>
+        <footer>
+           <p>Made with <span>❤</span> by <a href="https://joanarijo.dev/" target="_blank">Joana Rijo</a></p> 
+        </footer>
      );
 }
  
