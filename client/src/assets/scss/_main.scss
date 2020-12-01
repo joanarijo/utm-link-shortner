@@ -37,10 +37,19 @@ main {
             grid-template-columns: 1fr 1fr 1fr;
             column-gap: 52px;
         }
-        span {
+        textarea {
+            @include flex();
+            height: auto;
+            width: 100%;
             @include text($color-text, 14px, 400);
             display: block;
             margin-bottom: 10px;
+            padding: 10px 20px;
+            border: 1px solid $color-input-focus;
+            resize: none;
+            &:focus{
+                outline-color: $color-input-focus;
+            }
         }
         
     }
@@ -64,7 +73,7 @@ main {
             
         }  
     }
-    input[type="submit"]{
+    input[type="button"]{
         display: inline;
         border: 0;
         background: $color-btn;
