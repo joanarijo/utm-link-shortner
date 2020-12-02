@@ -51,7 +51,13 @@ main {
                 outline-color: $color-input-focus;
             }
         }
+        #utm{
+            @include text($color-text-light, 14px, 400);
+        }
         
+    }
+    #hidden{
+        display: none;
     }
     input{
         display: block;
@@ -73,7 +79,7 @@ main {
             
         }  
     }
-    input[type="button"]{
+    input[type="button"], input[type="submit"]{
         display: inline;
         border: 0;
         background: $color-btn;

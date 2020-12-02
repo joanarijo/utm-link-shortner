@@ -5,6 +5,12 @@ const uniqid = require('uniqid');
 // Load URL model
 const URL = require('../../models/Url');
 
+router.use((req, res, next) => {
+   res.header("Access-Control-Allow-Origin", "*");
+   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+   next();
+})
+
 // GET /api/shorten/test
 // Test API end point
 router.get('/test', (req, res) => res.json({message: "it's working"}));
@@ -24,6 +30,10 @@ router.post('/', (req, res) => {
       if(doc){
          // Check if URL exists
          console.log('Entry found in database.');
+         res.send({
+            error: 'Entry found in database. Please, check the archive.',
+            statusText: 'Duplicated'
+         })
      
       } else{
          // Saves new URL in database

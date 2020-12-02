@@ -1,8 +1,10 @@
 import React, { useRef, useState } from 'react';
-
+urlurlimport axios from 'axios';
+import validator from 'validator';
 
 
 const Main = () => {
+
 
     /* insert input values into textarea */
 
@@ -14,8 +16,10 @@ const Main = () => {
     });
     
     function handleChange(e) {
+        document.getElementById("utm").style.color = "#333333";
+        document.getElementById("error").innerHTML = "";
+        document.getElementById("hidden").style.display = "none";
         const value = e.target.value;
-
 
         setState({
             ...state,
@@ -29,24 +33,62 @@ const Main = () => {
   
     }
 
+    /* get changed utm url and convert it to shortlink */
+
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        const value = document.getElementById("utm").value;
+        const validUrl = validator.isURL(value, {
+            required_protocol: true
+        });
+        if(!validUrl){
+            alert('Please, make sure the url is correct and includes the http(s) protocol.');
+        } else {
+            axios.post('http://localhost:5000/api/shorten',{
+                url: value
+            })
+            .then( res => {
+                console.log(res);
+                if(res.data.statusText === "Duplicated"){
+                    document.getElementById("error").innerHTML = res.data.error;
+                }else{
+                    document.getElementById("hidden").style.display = "block";
+                    document.getElementById("shortlink").value = 'http://heroku.link/' + res.data.hash;
+                };
+            }).catch(err => console.log(err));
+        }
+    };
+
     /* copy to clipboard */ 
 
     const [copyUtm, setCopyUtmSuccess] = useState('');
     const textAreaUtm = useRef(null);
 
     function copyUtmToClipboard(e) {
+        e.preventDefault();
         textAreaUtm.current.select();
         document.execCommand('copy');
-        setCopyUtmSuccess('Url copied!');
+        setCopyUtmSuccess(
+            'Url copied.',
+            setTimeout(function() {
+                document.getElementById('copy').style.display = 'none';
+              }, 2000)
+        );
       };
 
     const [copyShortlink, setCopyShortlinkSuccess] = useState('');
     const textAreaShortlink = useRef(null);
   
     function copyShortlinkToClipboard(e) {
+        e.preventDefault();
         textAreaShortlink.current.select();
         document.execCommand('copy');
-        setCopyShortlinkSuccess('Url copied!');
+        setCopyShortlinkSuccess('Shortlink copied.',
+            setTimeout(function() {
+                document.getElementById('copy').style.display = 'none';
+              }, 2000)
+        );
     };
 
 
@@ -56,8 +98,8 @@ const Main = () => {
             <section>
                 <h3>Create a Campaign Link with <a href="https://support.google.com/analytics/answer/1033863" target="__blank">UTM Parameters</a></h3>
                 <p>Add UTM Parameters to your URL campaign and you can collect & track more efficient data in Google Analytics.</p>
-                <form>
-                    <fieldset >
+                <form onSubmit={handleSubmit}>
+                    <fieldset>
                         <input type="text" name="url" placeholder="Enter URL incluiding the http(s) protocol" value={state.url} onChange={handleChange}/>
                         <div>
                             <input id="teste" type="text" name="source" placeholder="Campaign Source" value={state.source} onChange={handleChange}/>
@@ -70,14 +112,15 @@ const Main = () => {
                     <fieldset>
                         <textarea id="utm" ref={textAreaUtm} value={state.url + "/?utm_source=" + state.source + "&utm_medium=" + state.medium + "&utm_campaign=" + state.name} />
                         <input type="button" value="Copy Url" onClick={copyUtmToClipboard}/>
-                        <input type="button" value="Convert to Shortlink" />
-                        {copyUtm}
+                        <input type="submit" value="Convert to Shortlink" />
+                        <span id="copy">{copyUtm}</span>
                     </fieldset>
                     <hr />
-                    <fieldset>
-                    <textarea id="utm" ref={textAreaShortlink} value="https://heroku.link/hg4587hd" />
+                    <span id="error"></span>
+                    <fieldset id="hidden">
+                    <textarea id="shortlink" ref={textAreaShortlink} value="" />
                     <input type="button" value="Copy Url" onClick={copyShortlinkToClipboard}/>
-                        {copyShortlink}
+                    <span id="copy">{copyShortlink}</span>
                     </fieldset>
                 </form>
                 <span></span>
