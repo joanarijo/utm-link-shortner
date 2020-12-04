@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './assets/scss/app.scss';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -9,13 +10,28 @@ import Footer from './components/Footer/component';
 
 function App() {
 
+const [list, setList] = useState([]);
+   
+useEffect(() => {
+  async function fetchList() {
+    const request = await axios.get('http://localhost:5000/api/archive');
+    setList(request.data.url);
+    return request;
+  }
+  fetchList();
+
+}, []);
+
+console.log(list);
+
+
   return (
   <React.Fragment>
     <Header />
     <Router>
         <Switch>
-          <Route path="/" exact component={Home}/>
-          <Route path="/archive" component={Archive}/>
+          <Route path="/" exact component={() => <Home list={list} />} />
+          <Route path="/archive" component={() => <Archive list={list} />} />
         </Switch>
     </Router>
     <Footer />

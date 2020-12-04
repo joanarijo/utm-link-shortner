@@ -17,7 +17,7 @@ aside {
         ul, p{
             @include text($color-text-light, 12px, 400);
             list-style-type: none;
-            padding: 0;
+            padding: 0 2rem 0 2rem;
 
         }
         p{

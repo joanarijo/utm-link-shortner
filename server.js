@@ -24,6 +24,9 @@ app.use('/api/shorten', shorten);
 const redirect = require('./routes/api/redirect');
 app.use('/api/redirect', redirect);
 
+const archive = require('./routes/api/archive');
+app.use('/api/archive', archive);
+
 // Redirect's based on id + hash
 app.get('/:hash', (req, res) => {
     const id = req.params.hash;

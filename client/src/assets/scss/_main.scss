@@ -9,7 +9,7 @@ main {
             @include link($color-text);
         }
     }
-    p{
+    p, li{
         @include text($color-text, 12px, 400);
     }
     a {
@@ -51,10 +51,10 @@ main {
                 outline-color: $color-input-focus;
             }
         }
-        #utm{
-            @include text($color-text-light, 14px, 400);
-        }
-        
+   
+    }
+    #hidden-field{
+        visibility: hidden;
     }
     #hidden{
         display: none;
@@ -101,5 +101,15 @@ main {
             }
         }
     }
-
+    ul {
+        list-style-type: none;
+        padding: 0 2rem 0 2rem;
+    }
+    /* archive */ 
+    .pagination {  
+        li {
+            display: inline;
+            padding: 5px;
+        }
+    }
 }

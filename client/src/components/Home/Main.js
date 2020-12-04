@@ -16,11 +16,12 @@ const Main = () => {
     });
     
     function handleChange(e) {
-        document.getElementById("utm").style.color = "#333333";
+        document.getElementById("hidden-field").style.visibility = "visible";
         document.getElementById("error").innerHTML = "";
         document.getElementById("hidden").style.display = "none";
+        
         const value = e.target.value;
-
+        
         setState({
             ...state,
             [e.target.name]: value
@@ -106,10 +107,9 @@ const Main = () => {
                             <input type="text" name="medium" placeholder="Campaign Medium" value={state.medium} onChange={handleChange} />
                             <input type="text" name="name" placeholder="Campaign Name" value={state.name} onChange={handleChange} />
                         </div>
-                        
-                        </fieldset>
+                    </fieldset>
                     <hr />
-                    <fieldset>
+                    <fieldset id="hidden-field">
                         <textarea id="utm" ref={textAreaUtm} value={state.url + "/?utm_source=" + state.source + "&utm_medium=" + state.medium + "&utm_campaign=" + state.name} />
                         <input type="button" value="Copy Url" onClick={copyUtmToClipboard}/>
                         <input type="submit" value="Convert to Shortlink" />

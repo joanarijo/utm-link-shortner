@@ -4,7 +4,7 @@
 footer {
     /* change to mixin */
     position: absolute;
-    /*bottom: 0;*/
+    bottom: 0;
     margin: 0 $size-wrap $size-wrap $size-wrap;
     p {
         @include text($color-text, 11px, 400);
