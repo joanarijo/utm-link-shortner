@@ -46,7 +46,7 @@ const Main = () => {
         if(!validUrl){
             alert('Please, make sure the url is correct and includes the http(s) protocol.');
         } else {
-            axios.post('http://localhost:5000/api/shorten',{
+            axios.post('/api/shorten',{
                 url: value
             })
             .then( res => {

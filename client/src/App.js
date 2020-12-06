@@ -14,7 +14,7 @@ const [list, setList] = useState([]);
    
 useEffect(() => {
   async function fetchList() {
-    const request = await axios.get('http://localhost:5000/api/archive');
+    const request = await axios.get('/api/archive');
     setList(request.data.url);
     return request;
   }

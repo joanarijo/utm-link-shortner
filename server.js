@@ -33,7 +33,7 @@ app.get('/:hash', (req, res) => {
     URL.findOne({_id:id}, (err, doc) => {
         if(doc){
             console.log(doc.url);
-            res.redirect('http://' + doc.url);
+            res.redirect(doc.url);
         } else{
             console.log('This url is invalid.');
             res.redirect('/');
