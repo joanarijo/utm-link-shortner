@@ -19,9 +19,9 @@
   },
   "homepage": "https://github.com/joanarijo/utm-link-shortner#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.1",
     "concurrently": "^5.3.0",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "mongoose": "^5.9.20",
     "nodemon": "^2.0.4",
     "uniqid": "^5.2.0"
